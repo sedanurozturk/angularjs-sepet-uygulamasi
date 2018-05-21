@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS ile Uygulama</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+    </style>
+
+</head>
+<body>
+	
+<div class="container" ng-app="sepet" ng-controller="sepetController">
+    <div class="well well-sm">
+        <strong>ÜRÜNLER</strong>
+       
+    </div>
+    <div id="products" class="row list-group">
+
+        <div class="item  col-xs-4 col-lg-4" ng-repeat="item in urunler">
+            <div class="thumbnail">
+                <img class="group list-group-image" src="img/product.jpg" alt="" />
+                <div class="caption">
+                    <h4 class="group inner list-group-item-heading">
+                        {{item.adi}}</h4>
+                       
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <p class="lead">
+                                {{item.fiyat}} TL</p>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <a class="btn btn-success" href="#0a" ng-click="ekle(item)">Sepete Ekle</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+    <div class="sepet">
+        <table id="cart" class="table table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th style="width:50%">Ürün Adı</th>
+                    <th style="width:10%">Fiyat</th>
+                    <th style="width:8%">Adet</th>
+                    <th style="width:22%" class="text-center">Ürün Toplamı</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="sepetitem in sepetlist">
+                    <td >
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <h4 class="nomargin">{{sepetitem.adi}}</h4>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{sepetitem.fiyat}} TL</td>
+                    <td>
+                       {{sepetitem.adet}}
+                    </td>
+                    <td class="text-center">{{sepetitem.uruntoplam}} TL</td>
+              
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr class="visible-xs">
+                    <td class="text-center"><strong>Toplam {{toplamfiyat}} TL</strong></td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="hidden-xs"></td>
+                    <td class="hidden-xs text-center"><strong>Toplam fiyat: {{toplamfiyat}} TL</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+  
+</div>
+<script type="text/javascript" src="js/angular.min.js"></script>	
+<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
